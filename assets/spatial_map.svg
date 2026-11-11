@@ -1,0 +1,61 @@
+<!--
+File: spatial_map.svg | Purpose: Show schematic familiar and novel routes with a density dimension.
+The wireframe, translucent cube, and palette come from the supplied website reference.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="485" viewBox="0 0 520 485">
+  <defs>
+    <pattern id="grid" width="37" height="37" patternUnits="userSpaceOnUse">
+      <path d="M37 0H0V37" fill="none" stroke="#b9c4ae" stroke-width=".65"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e2e8d7"/>
+      <stop offset="1" stop-color="#f4f1e8"/>
+    </linearGradient>
+    <marker id="axis-tip" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+      <path d="M0 0 5 2.5 0 5Z" fill="#657b5d"/>
+    </marker>
+  </defs>
+
+  <!-- 1. Isometric frame and X–Z floor -->
+  <circle cx="269" cy="232" r="190" fill="url(#fade)"/>
+  <circle cx="269" cy="232" r="190" fill="none" stroke="#c0cbb4" stroke-width=".7"/>
+  <circle cx="269" cy="232" r="146" fill="none" stroke="#c0cbb4" stroke-dasharray="2 6"/>
+  <path d="M53 312 266 432 479 312 266 190Z" fill="url(#grid)" stroke="#9aab8d" stroke-width=".7"/>
+  <path d="M53 312V169L266 48V190M266 48 479 169V312M53 169 266 290 479 169M266 290V432" fill="none" stroke="#8fa081" stroke-width=".8"/>
+  <path d="m89 292 213 120m-177-141 213 121m-178-142 213 122m-178-142 213 122m-177-142 213 122M89 332l213-122M125 352l213-122M160 372l213-122M195 392l213-122M231 412l213-122" fill="none" stroke="#a6b397" stroke-width=".6"/>
+  <path d="M34 114h22m-11-11v22M450 375h22m-11-11v22" stroke="#8b9c7c" stroke-width=".8"/>
+
+  <!-- 2. The novel route passes behind the translucent cube -->
+  <path d="M208 316 145 280 268 210 387 277"
+        fill="none" stroke="#526d50" stroke-width="3.2" stroke-dasharray="6 6"
+        stroke-linecap="round" stroke-linejoin="round" opacity=".78"/>
+  <path d="M267 149V68" fill="none" stroke="#8fa081" stroke-width="1" stroke-dasharray="4 5"/>
+  <g stroke="#748e65" stroke-width="1">
+    <path d="M196 190 267 231 338 190 267 149Z" fill="#b6c79c" fill-opacity=".65"/>
+    <path d="M196 190V271L267 312V231Z" fill="#a0b387" fill-opacity=".4"/>
+    <path d="M267 231 338 190V271L267 312Z" fill="#6d865d" fill-opacity=".3"/>
+  </g>
+
+  <!-- 3. The foreground route shares the same branch and reunion points -->
+  <path d="M160 343 208 316 264 347 387 277 430 301"
+        fill="none" stroke="#486346" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="160" cy="343" r="5.5" fill="#f4f1e8" stroke="#486346" stroke-width="2"/>
+  <circle cx="430" cy="301" r="6" fill="#486346"/>
+  <circle cx="430" cy="301" r="12" fill="none" stroke="#8fa081"/>
+
+  <!-- 4. Discreet labels keep the artwork legible at phone widths -->
+  <g fill="none" stroke="#657b5d" stroke-width="1.2">
+    <path d="M266 432 343 389" marker-end="url(#axis-tip)"/>
+    <path d="M266 432 189 389" marker-end="url(#axis-tip)"/>
+    <path d="M53 312V185" marker-end="url(#axis-tip)"/>
+    <path d="M138 254 144 271M320 345 327 318"/>
+  </g>
+  <g fill="#4b634b" font-family="Arial, Helvetica, sans-serif" font-size="18"
+     stroke="#f4f1e8" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke">
+    <text x="32" y="248" text-anchor="middle" transform="rotate(-90 32 248)">Density · Y</text>
+    <text x="96" y="247">Novel</text>
+    <text x="313" y="364">Familiar</text>
+    <text x="175" y="391">Z</text>
+    <text x="350" y="391">X</text>
+  </g>
+</svg>

@@ -1,0 +1,454 @@
+/*
+File: styles.css | Purpose: Layout, typography, and interaction styles for the academic homepage.
+The page uses system fonts and scales to a single column on small screens.
+*/
+
+/* 1. Color, type, and shared controls */
+:root {
+  color-scheme: light;
+  --paper: #f4f1e8;
+  --paper-light: #fcfaf4;
+  --ink: #203a31;
+  --muted: #536356;
+  --fern: #456348;
+  --sage: #b4c69a;
+  --line: #cbd0c3;
+  --focus: #865229;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: Arial, Helvetica, sans-serif;
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1rem/1.65 var(--sans);
+}
+
+::selection {
+  background: var(--sage);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.26em;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+ul {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+
+h2,
+h3 {
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(2.25rem, 4vw, 3.6rem);
+  line-height: 1.05;
+}
+
+h3 {
+  font-size: clamp(1.42rem, 2.2vw, 1.9rem);
+  line-height: 1.22;
+}
+
+.wrap {
+  width: min(75rem, calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.text-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 2;
+  inset: 0.75rem auto auto 0.75rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--paper-light);
+  transform: translateY(calc(-100% - 1.5rem));
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* 2. Navigation and split hero */
+.site-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner,
+.nav-links,
+.brand,
+.hero-actions,
+.contact-links {
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  justify-content: space-between;
+  min-height: 4.75rem;
+  gap: 0.25rem 2rem;
+}
+
+.brand {
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.monogram {
+  display: grid;
+  place-items: center;
+  width: 1.95rem;
+  height: 1.95rem;
+  border: 1px solid var(--fern);
+  border-radius: 50%;
+  font: italic 1rem var(--serif);
+}
+
+.nav-links {
+  flex-wrap: wrap;
+  gap: 0 1.7rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.nav-links a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-links a:hover,
+.brand:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.97fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+.hero-content .eyebrow {
+  color: var(--fern);
+}
+
+h1 {
+  margin-top: 1.3rem;
+  font-size: clamp(1.65rem, 4vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+h1 > span,
+h1 > em {
+  display: block;
+}
+
+h1 em {
+  color: var(--fern);
+}
+
+.hero-bio {
+  max-width: 29rem;
+  margin-top: 1.75rem;
+  color: var(--muted);
+  font-size: clamp(1.06rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.hero-actions,
+.contact-links {
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin-top: 1.35rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.15rem;
+  gap: 1.15rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--ink);
+  color: var(--paper-light);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--fern);
+}
+
+.hero-map {
+  width: min(100%, 33rem);
+  justify-self: center;
+}
+
+.hero-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 3. Research and publications */
+.section {
+  padding-block: clamp(3rem, 6vw, 5.25rem);
+  border-top: 1px solid var(--line);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+.section-grid h2 {
+  scroll-margin-top: 1.5rem;
+}
+
+.research-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 2.5rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.research-topics p,
+.contact p {
+  margin-top: 0.55rem;
+  color: var(--muted);
+}
+
+.research-section .section-grid {
+  row-gap: 2rem;
+}
+
+.research-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.research-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("assets/research_brains.png") center / cover no-repeat;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.research-section .research-topics p {
+  color: var(--ink);
+}
+
+.masters-project {
+  margin-top: 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.publications {
+  background: var(--paper-light);
+}
+
+.publication-list {
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.publication {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 0.45rem 1.25rem;
+  padding-block: 1.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.publication > time {
+  align-self: start;
+  padding-top: 0.24rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.publication h3 a {
+  text-decoration-color: var(--fern);
+  text-underline-offset: 0.15em;
+}
+
+.publication h3 a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.publication p {
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* 4. Projects, contact, and footer */
+.projects {
+  --focus: var(--sage);
+  padding-block: clamp(2.75rem, 4.8vw, 4.1rem);
+  border-top: 0;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.projects article {
+  max-width: 35rem;
+}
+
+.projects h3 {
+  color: var(--sage);
+}
+
+.projects p {
+  margin-top: 0.5rem;
+}
+
+.projects .text-link {
+  margin-top: 0.45rem;
+}
+
+.contact p {
+  max-width: 36rem;
+  margin-top: 0;
+}
+
+.contact-links {
+  margin-top: 0.65rem;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1.25rem;
+  padding-block: 0.75rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  min-height: 2.75rem;
+}
+
+/* 5. Reflow in reading order on tablets and phones */
+@media (max-width: 52rem) {
+  .section-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 43rem) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: 0.5rem 0.25rem;
+  }
+
+  .nav-links {
+    column-gap: clamp(0.65rem, 3vw, 1.2rem);
+    font-size: 0.8125rem;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.4rem;
+    padding-block: 2.75rem 2.4rem;
+  }
+
+  h1 {
+    font-size: clamp(1.6rem, 8.2vw, 3.9rem);
+    margin-top: 0.85rem;
+  }
+
+  .hero-bio {
+    margin-top: 1.15rem;
+  }
+
+  .hero-map {
+    width: min(100%, 23rem);
+  }
+
+  .research-topics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .publication {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .publication > time {
+    padding-top: 0;
+  }
+}
